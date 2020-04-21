@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script type="text/javascript" src="./vue@2.6.11.js"></script>
+	<script src="axios.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./objsequence.js" type="text/javascript" charset="utf-8"></script>
+	<title>保修订单</title>
+	<link rel="stylesheet" type="text/css" href="./list.css"/>
+</head>
+<body>
+	
+	<div id="app">
+		<nav>保修申请</nav>
+		<div class="listbody">
+			<!-- lebal -->
+			<div v-if="showlebal" style="padding-top: 200px;width: 100%;text-align: center;">数据加载中</div>
+			<ul @touchmove="getmorelist" class="thelist">
+				<li v-for="(item,index) in list" :key="index">
+					<div>{{item.faultDes}}<span>{{item.repairStateDes}}</span></div>
+					<p><span>房子地址：</span><span>{{item.houseDetailNameS}}</span></p>
+					<p><span>维修员：</span><span>{{item.repairmanName}}{{item.repairmanPhone}}</span></p>
+					<p><span>保修时间：</span><span>{{item.createTime}}</span></p>
+					<div class="dobtn">
+						<button @click="changemsg(item)">修改</button>
+						<button @click="delitem(item.repairApplyID,index)">删除</button>
+						<button @click="detailitem(item)">查看详情</button>
+						<button v-if="item.repairState == 10374">支付</button>
+					</div>
+				</li>
+			</ul>
+			<div v-show="getmore" style="height: 40px;text-align: center;color: red;">加载更多的数据中...</div>
+			<div v-if="nomoremsg" style="padding-top: 50px;text-align: center;">没有更多数据</div>
+		</div>
+		<button class="listbtnbot" @click="editeldom=true;clearmsg()">+保修</button>
+		
+		<!-- 删除提示框 -->
+		<div class="delel" v-show="deleldom">
+			<ul>
+				<li>是否确定删除</li>
+				<li><button type="button" @click="deleldom=false">取消</button><button type="button" @click="delsure">删除</button></li>
+			</ul>
+		</div>
+		<!-- 删除成功的提示 -->
+		<div class="delseccess" v-show="delseccess"></div>
+		<!-- 详情页面 -->
+		<div class="detel" v-show="deteldom">
+			<ul>
+				<li class="delellist"></li>
+				<li @click="deteldom=false">关闭详情</li>
+			</ul>
+		</div>
+		<!-- 编辑页面 -->
+		<div class="editel" v-show="editeldom">
+			<nav>
+				<span @click="editeldom=false">关闭</span>
+				<p v-text="edittitle"></p>
+			</nav>
+			<p>报修类型</p>
+			<input v-model="retype" type="" name="" id="" value="" />
+			<p>费用描述</p>
+			<input type="" name="" id="" value="" />
+			<p>故障描述</p>
+			<input v-model="upmsg" type="" name="" id="" value="" />
+			<p>上传图片</p>
+			<ul>
+				<li></li>
+				<li>
+					<input type="file" name="" id="" value="" />
+				</li>
+			</ul>
+			<p>您可以修改联系方式</p>
+			<input @input="phonenum = phonenum.replace(/[^\d]/g,'')" v-model="phonenum" />
+			<p>您可以修改联人</p>
+			<input v-model="username" />
+			
+			<div v-text="sunlebal" style="color: red;"></div>
+			
+			<button type="button" @click="submsg">提交报修信息</button>
+		</div>
+	
+		
+	</div>
+<script src="./list.js"></script>
+</body>
+</html>

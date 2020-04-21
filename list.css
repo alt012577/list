@@ -1,0 +1,271 @@
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+body{
+	height: 100vh;
+	width: 100vw;
+}
+#app{
+	position: relative;
+}
+button{
+	border: none;
+}
+.listbody{
+	height: calc(100vh - 100px);
+	overflow-y: scroll;
+	background-color: #efefef;
+}
+
+nav{
+	background-color: #A2C5FF;
+	color: #fff;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+}
+.thelist li{
+	list-style: none;
+	padding: 20px 0;
+	width: 90%;
+	margin: 15px auto 0;
+	border-radius: 4px;
+	background-color: #fff;
+	
+}
+.thelist li>div{
+	margin-left: 15px;
+}
+.thelist li>p>span:nth-of-type(1){
+	color: gray;
+	margin-left: 15px;
+}
+.thelist li>div:nth-of-type(1){
+	font-weight: bold;
+}
+.thelist li>div:nth-of-type(1) span{
+	float: right;
+	color: red;
+	font-weight: normal
+}
+.dobtn{
+	margin-top: 10px;
+}
+.dobtn button{
+	background-color: #A2C5FF;
+	color: #fff;
+	font-size: 12px;
+	border: none;
+	margin-left: 20px;
+	padding: 5px 10px;
+	border-radius: 3px;
+}
+.listbtnbot{
+	display: block;
+	width: 100%;
+	height: 50px;
+	background-color: #A2C5FF;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	text-decoration: none;
+}
+
+.delel,
+.detel,
+.editel{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	/* height: 0; */
+	width: 100%;
+	background-color: #efefef;
+}
+.detel{
+	animation: detelshow 300ms;
+}
+@keyframes detelshow{
+	from{
+		transform: translateX(100vh);
+		opacity: 0.5;
+	}
+	to{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+.detel>ul{
+	width: 100%;
+	height: 100%;
+}
+.detel>ul>li:first-child{
+	height: calc(100% - 50px);
+	position: relative;
+}
+.detel>ul>li:first-child::after{
+	height: 1px;
+	width: 100%;
+	content: "";
+	background-color: #555;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: scaleY(0.3);
+}
+.detel>ul>li:last-child{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+.detel>ul>li:last-child:active{
+	background-color: #fff;
+}
+.editel{
+	overflow: hidden;
+	animation: editelshow 300ms;
+}
+@keyframes editelshow{
+	from{
+		transform: translateX(100vh);
+	}
+	to{
+		transform: translateX(0);
+	}
+}
+.editel input{
+	background-color: #fff;
+	width: 80%;
+	height: 40px;
+	border: none;
+	border-radius: 6px;
+	margin-left: 20px;
+}
+.editel button{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	background-color: #A2C5FF;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bolder;
+}
+.editel p{
+	font-size: 0.875rem;
+	margin: 10px 0 8px 20px;
+}
+.editel nav p{
+	margin: 0;
+}
+.editel ul{
+	display: flex;
+	margin-left: 20px;
+	list-style: none;
+}
+.editel ul input{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.editel ul li{
+	height: 70px;
+	width: 70px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-right: 10px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+.editel ul li:last-child::before,
+.editel ul li:last-child::after{
+	content: "";
+	display: block;
+	background-color: #ccc;
+	width: 60%;
+	height: 5px;
+	border-radius: 3px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 0;
+}
+.editel ul li:last-child::after{
+	transform: translate(-50%,-50%) rotate(90deg);
+}
+nav>span{
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 20%;
+	text-align: center;
+	background-color: #FFBA79;
+}
+.delseccess{
+	position: absolute;
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #FFFFFF;
+	-webkit-box-shadow: 0 0 30px #aaaaaa99;
+	bottom: 20%;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 10px;
+}
+.delel{
+	background-color: #eeeeee55;
+}
+.delel ul{
+	height: 200px;
+	width: 300px;
+	background-color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	list-style: none;
+	border-radius: 8px;
+	box-shadow: 0 0 20px #ddd;
+	overflow: hidden;
+}
+.delel ul li:first-child{
+	height: 160px;
+	width: 100%;
+	text-align: center;
+	line-height: 160px;
+}
+.delel ul li:last-child{
+	height: 40px;
+}
+.delel ul button{
+	width: 50%;
+	height: 100%;
+	position: relative;
+}
+.delel ul button:active{
+	background-color: #EFEFEF;
+}
+.delel ul button:nth-of-type(1)::after{
+	height: 100%;
+	width: 1px;
+	background-color: #fff;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: scaleX(0.3);
+}
